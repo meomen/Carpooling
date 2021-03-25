@@ -93,12 +93,12 @@ public class RegisterActivity  extends AppCompatActivity implements RegisterStep
 
     private void setupFragments() {
         mRegisterStepOneFragment = new RegisterStepOneFragment();
-        mRegisterStepTwoFragment = new RegisterStepTwoFragment();
+//        mRegisterStepTwoFragment = new RegisterStepTwoFragment();
         mRegisterStepThreeFragment = new RegisterStepThreeFragment();
         mRegisterStepFourFragment = new RegisterStepFourFragment();
         pageAdapter = new SectionsStatePageAdapter(getSupportFragmentManager());
         pageAdapter.addFragment(mRegisterStepOneFragment, getString(R.string.fragment)); //fragment 0
-        pageAdapter.addFragment(mRegisterStepTwoFragment, getString(R.string.fragment)); //fragment 1
+//        pageAdapter.addFragment(mRegisterStepTwoFragment, getString(R.string.fragment)); //fragment 1
         pageAdapter.addFragment(mRegisterStepThreeFragment, getString(R.string.fragment)); //fragment 2
         pageAdapter.addFragment(mRegisterStepFourFragment, getString(R.string.fragment)); //fragment 3
     }

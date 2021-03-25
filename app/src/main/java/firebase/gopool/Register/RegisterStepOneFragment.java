@@ -3,11 +3,13 @@ package firebase.gopool.Register;
 import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.viewpager.widget.ViewPager;
 
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -47,10 +49,10 @@ public class RegisterStepOneFragment extends Fragment {
     //widgets
     private Button mNextButton1;
     private ImageView mbackButton1;
-    private EditText mEmail, mPassword;
+    private EditText mEmail, mPassword, mRePassword, mUserName;
 
 
-    public interface OnButtonClickListener{
+    public interface OnButtonClickListener {
         void onButtonClicked(View view);
     }
 
@@ -58,7 +60,7 @@ public class RegisterStepOneFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-         final View mView = inflater.inflate(R.layout.fragment_register_one, container, false);
+        final View mView = inflater.inflate(R.layout.fragment_register_one, container, false);
 
         //Firebase setup
         mAuth = FirebaseAuth.getInstance();
@@ -71,25 +73,37 @@ public class RegisterStepOneFragment extends Fragment {
         mRelativeLayout = (RelativeLayout) mView.findViewById(R.id.removeableLayout);
 
         mNextButton1 = (Button) mView.findViewById(R.id.nextBtn1);
+        mUserName = (EditText) mView.findViewById(R.id.usernameStepTwoEditText);
         mEmail = (EditText) mView.findViewById(R.id.emailStepOneEditText);
         mPassword = (EditText) mView.findViewById(R.id.passwordStepOneEditText);
+        mRePassword = (EditText) mView.findViewById(R.id.repasswordStepOneEditText);
+
 
         mNextButton1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(mEmail.getText().length() > 0  && mPassword.getText().length() > 0) {
-                    if (isValidEmailAddress(mEmail.getText().toString())){
-                        if (mPassword.getText().length() >= 6) {
-                            //Creates Account with email and password entered
-                            mOnButtonClickListener.onButtonClicked(v);
+                if (!TextUtils.isEmpty(mUserName.getText().toString())
+                        && !TextUtils.isEmpty(mEmail.getText().toString())
+                        && !TextUtils.isEmpty(mPassword.getText().toString())
+                        && !TextUtils.isEmpty(mRePassword.getText().toString())
+                ) {
+                    if (isValidEmailAddress(mEmail.getText().toString())) {
+                        String password = mPassword.getText().toString();
+                        String rePassword = mRePassword.getText().toString();
+                        if (password.length() >= 6) {
+                            if (password.equals(rePassword)) {
+                                //Creates Account with email and password entered
+                                mOnButtonClickListener.onButtonClicked(v);
+                            } else {
+                                    Toast.makeText(mView.getContext(), "Your password and reenter password do not match", Toast.LENGTH_SHORT).show();
+                            }
                         } else {
                             Toast.makeText(mView.getContext(), "Please use stronger password", Toast.LENGTH_SHORT).show();
                         }
                     } else {
                         Toast.makeText(mView.getContext(), "Invalid email address.", Toast.LENGTH_SHORT).show();
                     }
-                }
-                else {
+                } else {
                     Toast.makeText(mView.getContext(), "All fields must be filled in.", Toast.LENGTH_SHORT).show();
                 }
             }
@@ -124,15 +138,13 @@ public class RegisterStepOneFragment extends Fragment {
         }
     }
 
-    public String getEmail(){
+    public String getEmail() {
         return mEmail.getText().toString().trim();
     }
 
-    public String getPassword(){
+    public String getPassword() {
         return mPassword.getText().toString().trim();
     }
-
-
 
 
     /** --------------------------- Firebase ---------------------------- **/
@@ -146,6 +158,7 @@ public class RegisterStepOneFragment extends Fragment {
         // Check if user is signed in (non-null) and update UI accordingly.
         FirebaseUser currentUser = mAuth.getCurrentUser();
     }
+
 }
 
 
