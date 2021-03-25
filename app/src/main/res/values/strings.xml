@@ -37,7 +37,7 @@
 
     <!-- Google maps API key -->
 <!--    <string name="google_maps_api_key">AIzaSyB72sjEH0HojCDNY9lV9F3hDgbJQGJBWb0</string>-->
-    <string name="google_maps_api_key" templateMergeStrategy="preserve" translatable="false">AIzaSyB72sjEH0HojCDNY9lV9F3hDgbJQGJBWb0</string>
+    <string name="google_maps_api_key" templateMergeStrategy="preserve" translatable="false">AIzaSyCvsxvlCkhA_X4L6BdDA1RO1X6ng-M8Nts</string>
     <string name="title_activity_settings">Settings</string>
 
     <!-- Strings related to Settings -->

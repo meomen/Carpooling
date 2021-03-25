@@ -13,11 +13,11 @@ import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.firebase.geofire.GeoFire;
-import com.github.glomadrian.materialanimatedswitch.MaterialAnimatedSwitch;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -54,7 +54,7 @@ public class EditRideActivity extends AppCompatActivity {
 
     //Widgets
     private EditText mDateOfJourneyEditText, mCostEditText, mPickupEditText, mExtraTimeEditText, mLuggageEditText, mPickupLocationEditText;
-    private MaterialAnimatedSwitch mSameGender;
+    private Switch mSameGender;
     private Button mSnippetOfferRideButton;
     private Boolean sameGenderBoolean = false;
     private Calendar mCalandar;
@@ -133,7 +133,7 @@ public class EditRideActivity extends AppCompatActivity {
         durationTxt.setText(duration);
         mPickupLocationEditText.setText(pickupLocation);
 
-        mSameGender = (MaterialAnimatedSwitch) findViewById(R.id.genderSwitch);
+        mSameGender = (Switch) findViewById(R.id.genderSwitch);
 //        mSameGender.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
 //            @Override
 //            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {

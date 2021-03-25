@@ -292,7 +292,7 @@
                         android:id="@+id/sameGenderTxt"
                         android:text="Same gender" />
 
-                    <com.github.glomadrian.materialanimatedswitch.MaterialAnimatedSwitch
+                    <Switch
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:id="@+id/genderSwitch"
