@@ -59,6 +59,7 @@ public class LoginActivity extends AppCompatActivity {
         mProgressBar = (ProgressBar) findViewById(R.id.loginRequestProgressBar);
         mPleaseWait = (TextView) findViewById(R.id.loadingPleaseWait);
         mLoadingCardView = (CardView) findViewById(R.id.card_view_loading);
+
         mEmail = (EditText) findViewById(R.id.emailEditText);
         mPassword = (EditText) findViewById(R.id.passwordEditText);
         mBtn_signup = (TextView) findViewById(R.id.btn_signup);
@@ -73,7 +74,7 @@ public class LoginActivity extends AppCompatActivity {
 
     private boolean isStringNull(String string) {
         Log.d(TAG, "isStringNull: checking string if null");
-        if (string.equals("")) {
+        if (string.equals("") || string.isEmpty() || string == null) {
             return true;
         } else {
             return false;
