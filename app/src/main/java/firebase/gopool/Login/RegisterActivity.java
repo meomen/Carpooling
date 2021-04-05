@@ -126,11 +126,10 @@ public class RegisterActivity  extends AppCompatActivity implements RegisterStep
                 //handle currPos is reached last item
                 mViewPager.setCurrentItem(currPos + 1);
                 break;
-
-            case R.id.nextBtn2:
-                //handle currPos is reached last item
-                mViewPager.setCurrentItem(currPos + 1);
-                break;
+//            case R.id.nextBtn2:
+//                //handle currPos is reached last item
+//                mViewPager.setCurrentItem(currPos + 1);
+//                break;
 
             case R.id.nextBtn3:
                 //handle currPos is reached last item
@@ -161,7 +160,7 @@ public class RegisterActivity  extends AppCompatActivity implements RegisterStep
         this.password = mRegisterStepOneFragment.getPassword();
 
         //Fragment 2 data (username check)
-        this.username = mRegisterStepTwoFragment.getUsername();
+        this.username = mRegisterStepOneFragment.getUserName();
 
         //Fragment 3 data (personal info for database)
         this.fullName = mRegisterStepThreeFragment.getFullname();

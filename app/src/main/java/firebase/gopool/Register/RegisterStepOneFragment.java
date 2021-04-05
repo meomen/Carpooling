@@ -146,6 +146,11 @@ public class RegisterStepOneFragment extends Fragment {
         return mPassword.getText().toString().trim();
     }
 
+    public String getUserName() {
+        return mUserName.getText().toString().trim();
+    }
+
+
 
     /** --------------------------- Firebase ---------------------------- **/
 

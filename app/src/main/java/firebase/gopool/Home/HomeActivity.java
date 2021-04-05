@@ -109,7 +109,7 @@ public class HomeActivity extends AppCompatActivity implements OnMapReadyCallbac
     private static final String FINE_LOCATION = Manifest.permission.ACCESS_FINE_LOCATION;
     private static final String COURSE_LOCATION = Manifest.permission.ACCESS_COARSE_LOCATION;
     private static final int LOCATION_PERMISSION_REQUEST_CODE = 1234;
-    private static final float DEFAULT_ZOOM = 5f;
+    private static final float DEFAULT_ZOOM = 15f;
     private static final int PLACE_PICKER_REQUEST = 1;
     private static final LatLngBounds LAT_LNG_BOUNDS = new LatLngBounds(
             new LatLng(-40, -168), new LatLng(71, 136));
@@ -296,7 +296,8 @@ public class HomeActivity extends AppCompatActivity implements OnMapReadyCallbac
         // Output format
         String output = "json";
         // Building the url to the web service
-        String url = "https://maps.googleapis.com/maps/api/directions/" + output + "?" + parameters + "&key=" + "AIzaSyAdxoG2-SYygmV5r_xtwOGfUK1t8md6DBM";
+        String google_api = getResources().getString(R.string.google_maps_api_key);
+        String url = "https://maps.googleapis.com/maps/api/directions/" + output + "?" + parameters + "&key=" + google_api;
         return url;
     }
 
@@ -467,6 +468,11 @@ public class HomeActivity extends AppCompatActivity implements OnMapReadyCallbac
                             currentLatitude = result.getLatitude();
                             currentLongtitude = result.getLongitude();
 
+                            LatLng latLng = new LatLng(currentLatitude,currentLongtitude);
+                            place1 = new MarkerOptions()
+                                    .position(latLng)
+                                    .title("My location");
+
                             geoDecoder(result);
                         } else {
                             Log.d(TAG, "onComplete: current location is null");
@@ -564,7 +570,7 @@ public class HomeActivity extends AppCompatActivity implements OnMapReadyCallbac
                     mMarker = mMap.addMarker(place1);
 
                 } else {
-                    mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng, 7f));
+                    mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng, DEFAULT_ZOOM));
 
                     place2 = new MarkerOptions()
                             .position(latLng)

@@ -101,7 +101,9 @@ public class PaymentActivity extends AppCompatActivity {
         getsSeatsRemaining();
 
 
-        new getToken().execute();
+//        new getToken().execute();
+        mGroupWaiting.setVisibility(View.GONE);
+        mGroupPayment.setVisibility(View.VISIBLE);
 
         mPaymentBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -119,8 +121,10 @@ public class PaymentActivity extends AppCompatActivity {
     }
 
     private void submitPayment() {
-        DropInRequest dropInRequest = new DropInRequest().clientToken(token);
-        startActivityForResult(dropInRequest.getIntent(mContext), REQUEST_CODE);
+//        DropInRequest dropInRequest = new DropInRequest().clientToken(token);
+//        startActivityForResult(dropInRequest.getIntent(mContext), REQUEST_CODE);
+        Toast.makeText(mContext, "Transaction successful!", Toast.LENGTH_SHORT).show();
+        requestPickupHere();
     }
 
     private void init(){
@@ -151,13 +155,14 @@ public class PaymentActivity extends AppCompatActivity {
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-       if (requestCode == REQUEST_CODE){
-            if (resultCode == RESULT_OK){
-                DropInResult  result = data.getParcelableExtra(DropInResult.EXTRA_DROP_IN_RESULT);
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == REQUEST_CODE) {
+            if (resultCode == RESULT_OK) {
+                DropInResult result = data.getParcelableExtra(DropInResult.EXTRA_DROP_IN_RESULT);
                 PaymentMethodNonce nonce = result.getPaymentMethodNonce();
                 String strNonce = nonce.getNonce();
 
-                if (!mEditAmount.getText().toString().isEmpty()){
+                if (!mEditAmount.getText().toString().isEmpty()) {
                     amount = getCurrentAmount();
                     paramsHash = new HashMap<>();
                     paramsHash.put("amount", amount);
@@ -173,7 +178,7 @@ public class PaymentActivity extends AppCompatActivity {
                 Exception exception = (Exception) data.getSerializableExtra(DropInActivity.EXTRA_ERROR);
                 Log.d(TAG, "onActivityResult: " + exception.getMessage());
             }
-       }
+        }
     }
 
     private void sendPayments() {
