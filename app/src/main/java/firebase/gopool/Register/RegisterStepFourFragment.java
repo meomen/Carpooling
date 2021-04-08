@@ -9,7 +9,6 @@ import android.os.Bundle;
 import android.provider.MediaStore;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import com.google.android.material.textfield.TextInputLayout;
 import androidx.fragment.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -18,6 +17,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
@@ -54,7 +54,7 @@ public class RegisterStepFourFragment extends Fragment {
     private Button mNextButton4;
     private ImageView mbackButton4, mCarPhoto, mRestartRegistration;
     private EditText mLicence, mCar, mSeats, mRegistration;
-    private TextInputLayout mLicenceLayout, mCarLayout, mRegistrationLayout, mSeatsLayout;
+    private LinearLayout mLicenceLayout, mCarLayout, mRegistrationLayout, mSeatsLayout;
     private RadioButton mCarToggleTrue, mCarToggleFalse;
     private RadioGroup mCarToggle;
     private Boolean ownVehicle;
@@ -99,10 +99,10 @@ public class RegisterStepFourFragment extends Fragment {
         mCarToggle = (RadioGroup) mView.findViewById(R.id.carToggle);
         mCarToggleFalse = (RadioButton) mView.findViewById(R.id.noCarButton);
         mCarToggleTrue = (RadioButton) mView.findViewById(R.id.yesCarButton);
-        mLicenceLayout = (TextInputLayout) mView.findViewById(R.id.licenceLayout);
-        mCarLayout = (TextInputLayout) mView.findViewById(R.id.carLayout);
-        mRegistrationLayout = (TextInputLayout) mView.findViewById(R.id.registrationLayout);
-        mSeatsLayout = (TextInputLayout) mView.findViewById(R.id.seatsLayout);
+        mLicenceLayout = (LinearLayout) mView.findViewById(R.id.licenceLayout);
+        mCarLayout = (LinearLayout) mView.findViewById(R.id.carLayout);
+        mRegistrationLayout = (LinearLayout) mView.findViewById(R.id.registrationLayout);
+        mSeatsLayout = (LinearLayout) mView.findViewById(R.id.seatsLayout);
         mCarPhoto = (ImageView) mView.findViewById(R.id.uploadCarPicture);
 
         mCarPhoto.setOnClickListener(new View.OnClickListener() {

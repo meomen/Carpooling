@@ -8,175 +8,343 @@
         android:layout_height="match_parent"
         android:id="@+id/backgroundRelativeLayout">
 
+
+        <ImageView
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:id="@+id/registrationPicture"
+            android:src="@drawable/ic_change_picture"
+            android:layout_margin="15dp"
+            android:layout_centerHorizontal="true"/>
+
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:gravity="center"
+                android:layout_below="@id/registrationPicture"
                 android:id="@+id/relLayout1">
 
-                <ImageView
-                    android:layout_width="100dp"
-                    android:layout_height="100dp"
-                    android:id="@+id/registrationPicture"
-                    android:src="@drawable/ic_change_picture"
-                    android:layout_centerHorizontal="true"/>
 
 
                 <!-- Full name layout -->
-                <com.google.android.material.textfield.TextInputLayout
+<!--                <com.google.android.material.textfield.TextInputLayout-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:id="@+id/fullnameLayout">-->
+<!--                    <EditText-->
+<!--                        android:layout_centerHorizontal="true"-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:layout_marginLeft="15dp"-->
+<!--                        android:layout_marginRight="15dp"-->
+<!--                        android:layout_marginTop="10dp"-->
+<!--                        android:background="@android:color/transparent"-->
+<!--                        android:inputType="textPersonName"-->
+<!--                        android:drawableLeft="@drawable/ic_fullname"-->
+<!--                        android:drawablePadding="10dp"-->
+<!--                        android:padding="8dp"-->
+<!--                        android:width="400dp"-->
+<!--                        android:textSize="16sp"-->
+<!--                        android:fontFamily="sans-serif"-->
+<!--                        android:id="@+id/fullnameStepThreeEditText"-->
+<!--                        android:hint="Full name" />-->
+<!--                </com.google.android.material.textfield.TextInputLayout>-->
+
+                <LinearLayout
+                    android:id="@+id/fullnameLayout"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_below="@id/registrationPicture"
-                    android:id="@+id/fullnameLayout">
-                    <EditText
-                        android:layout_centerHorizontal="true"
+                    android:orientation="horizontal"
+                    android:background="@drawable/rect"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginRight="15dp"
+                    android:layout_marginTop="10dp"
+                    android:padding="12dp">
+
+                    <ImageView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="15dp"
-                        android:layout_marginRight="15dp"
-                        android:layout_marginTop="10dp"
-                        android:background="@android:color/transparent"
-                        android:inputType="textPersonName"
-                        android:drawableLeft="@drawable/ic_fullname"
-                        android:drawablePadding="10dp"
-                        android:padding="8dp"
-                        android:width="400dp"
-                        android:textSize="16sp"
-                        android:fontFamily="sans-serif"
+                        android:src="@drawable/ic_fullname"/>
+
+                    <EditText
                         android:id="@+id/fullnameStepThreeEditText"
-                        android:hint="Full name" />
-                </com.google.android.material.textfield.TextInputLayout>
+                        android:background="#00000000"
+                        android:layout_marginLeft="10dp"
+                        android:inputType="textPersonName"
+                        android:hint="Full name"
+                        android:textColorHint="@color/TransparentWhite"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+                </LinearLayout>
 
-                <com.google.android.material.textfield.TextInputLayout
+<!--                <com.google.android.material.textfield.TextInputLayout-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_below="@id/fullnameLayout"-->
+<!--                    android:id="@+id/dobLayout">-->
+<!--                    <EditText-->
+<!--                        android:layout_centerHorizontal="true"-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:layout_marginLeft="15dp"-->
+<!--                        android:layout_marginRight="15dp"-->
+<!--                        android:layout_marginTop="10dp"-->
+<!--                        android:drawableLeft="@drawable/ic_dob"-->
+<!--                        android:drawablePadding="10dp"-->
+<!--                        android:padding="8dp"-->
+<!--                        android:width="400dp"-->
+<!--                        android:focusable="false"-->
+<!--                        android:background="@null"-->
+<!--                        android:inputType="textNoSuggestions"-->
+<!--                        android:textSize="16sp"-->
+<!--                        android:fontFamily="sans-serif"-->
+<!--                        android:id="@+id/dobStepThreeEditText"-->
+<!--                        android:hint="Date of birth" />-->
+<!--                </com.google.android.material.textfield.TextInputLayout>-->
+                <LinearLayout
+                    android:id="@+id/dobLayout"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:background="@drawable/rect"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginRight="15dp"
+                    android:layout_marginTop="10dp"
                     android:layout_below="@id/fullnameLayout"
-                    android:id="@+id/dobLayout">
-                    <EditText
-                        android:layout_centerHorizontal="true"
+                    android:padding="12dp">
+
+                    <ImageView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="15dp"
-                        android:layout_marginRight="15dp"
-                        android:layout_marginTop="10dp"
-                        android:drawableLeft="@drawable/ic_dob"
-                        android:drawablePadding="10dp"
-                        android:padding="8dp"
-                        android:width="400dp"
-                        android:focusable="false"
-                        android:background="@null"
-                        android:inputType="textNoSuggestions"
-                        android:textSize="16sp"
-                        android:fontFamily="sans-serif"
+                        android:src="@drawable/ic_dob"/>
+
+                    <EditText
                         android:id="@+id/dobStepThreeEditText"
-                        android:hint="Date of birth" />
-                </com.google.android.material.textfield.TextInputLayout>
+                        android:background="#00000000"
+                        android:layout_marginLeft="10dp"
+                        android:inputType="textNoSuggestions"
+                        android:hint="Date of birth"
+                        android:textColorHint="@color/TransparentWhite"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+                </LinearLayout>
 
 
                 <!-- Mobile number layout -->
-                <com.google.android.material.textfield.TextInputLayout
+<!--                <com.google.android.material.textfield.TextInputLayout-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_below="@id/dobLayout"-->
+<!--                    android:id="@+id/usernameLayout">-->
+<!--                    <EditText-->
+<!--                        android:layout_centerHorizontal="true"-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:layout_marginLeft="15dp"-->
+<!--                        android:layout_marginRight="15dp"-->
+<!--                        android:layout_marginTop="10dp"-->
+<!--                        android:background="@android:color/transparent"-->
+<!--                        android:inputType="number"-->
+<!--                        android:drawableLeft="@drawable/ic_phone"-->
+<!--                        android:drawablePadding="10dp"-->
+<!--                        android:padding="8dp"-->
+<!--                        android:width="400dp"-->
+<!--                        android:textSize="16sp"-->
+<!--                        android:fontFamily="sans-serif"-->
+<!--                        android:id="@+id/mobileStepThreeEditText"-->
+<!--                        android:hint="Mobile number" />-->
+<!--                </com.google.android.material.textfield.TextInputLayout>-->
+
+                <LinearLayout
+                    android:id="@+id/usernameLayout"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:background="@drawable/rect"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginRight="15dp"
+                    android:layout_marginTop="10dp"
                     android:layout_below="@id/dobLayout"
-                    android:id="@+id/usernameLayout">
-                    <EditText
-                        android:layout_centerHorizontal="true"
+                    android:padding="12dp">
+
+                    <ImageView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="15dp"
-                        android:layout_marginRight="15dp"
-                        android:layout_marginTop="10dp"
-                        android:background="@android:color/transparent"
-                        android:inputType="number"
-                        android:drawableLeft="@drawable/ic_phone"
-                        android:drawablePadding="10dp"
-                        android:padding="8dp"
-                        android:width="400dp"
-                        android:textSize="16sp"
-                        android:fontFamily="sans-serif"
+                        android:src="@drawable/ic_phone"/>
+
+                    <EditText
                         android:id="@+id/mobileStepThreeEditText"
-                        android:hint="Mobile number" />
-                </com.google.android.material.textfield.TextInputLayout>
+                        android:background="#00000000"
+                        android:layout_marginLeft="10dp"
+                        android:inputType="number"
+                        android:hint="Mobile number"
+                        android:textColorHint="@color/TransparentWhite"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+                </LinearLayout>
 
-                <!-- Mobile number layout -->
-                <com.google.android.material.textfield.TextInputLayout
+                <!-- Work number layout -->
+<!--                <com.google.android.material.textfield.TextInputLayout-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_below="@id/usernameLayout"-->
+<!--                    android:id="@+id/workLayout">-->
+<!--                    <EditText-->
+<!--                        android:layout_centerHorizontal="true"-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:layout_marginLeft="15dp"-->
+<!--                        android:layout_marginRight="15dp"-->
+<!--                        android:layout_marginTop="10dp"-->
+<!--                        android:background="@android:color/transparent"-->
+<!--                        android:inputType="textPersonName"-->
+<!--                        android:drawableLeft="@drawable/ic_work"-->
+<!--                        android:drawableTint="#838383"-->
+<!--                        android:drawablePadding="10dp"-->
+<!--                        android:padding="8dp"-->
+<!--                        android:width="400dp"-->
+<!--                        android:textSize="16sp"-->
+<!--                        android:fontFamily="sans-serif"-->
+<!--                        android:id="@+id/workEditTextStepThree"-->
+<!--                        android:hint="Work place" />-->
+<!--                </com.google.android.material.textfield.TextInputLayout>-->
+
+                <LinearLayout
+                    android:id="@+id/workLayout"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:background="@drawable/rect"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginRight="15dp"
+                    android:layout_marginTop="10dp"
                     android:layout_below="@id/usernameLayout"
-                    android:id="@+id/workLayout">
-                    <EditText
-                        android:layout_centerHorizontal="true"
+                    android:padding="12dp">
+
+                    <ImageView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="15dp"
-                        android:layout_marginRight="15dp"
-                        android:layout_marginTop="10dp"
-                        android:background="@android:color/transparent"
-                        android:inputType="textPersonName"
-                        android:drawableLeft="@drawable/ic_work"
-                        android:drawableTint="#838383"
-                        android:drawablePadding="10dp"
-                        android:padding="8dp"
-                        android:width="400dp"
-                        android:textSize="16sp"
-                        android:fontFamily="sans-serif"
+                        android:src="@drawable/ic_work_2"
+                        />
+
+                    <EditText
                         android:id="@+id/workEditTextStepThree"
-                        android:hint="Work place" />
-                </com.google.android.material.textfield.TextInputLayout>
+                        android:background="#00000000"
+                        android:layout_marginLeft="10dp"
+                        android:hint="Work place"
+                        android:textColorHint="@color/TransparentWhite"
+                        android:inputType="textPersonName"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+                </LinearLayout>
 
                 <!-- Mobile number layout -->
-                <com.google.android.material.textfield.TextInputLayout
+<!--                <com.google.android.material.textfield.TextInputLayout-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_below="@id/workLayout"-->
+<!--                    android:id="@+id/educationLayout">-->
+<!--                    <EditText-->
+<!--                        android:layout_centerHorizontal="true"-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:layout_marginLeft="15dp"-->
+<!--                        android:layout_marginRight="15dp"-->
+<!--                        android:layout_marginTop="10dp"-->
+<!--                        android:background="@android:color/transparent"-->
+<!--                        android:inputType="textPersonName"-->
+<!--                        android:drawableLeft="@drawable/ic_education"-->
+<!--                        android:drawableTint="#838383"-->
+<!--                        android:drawablePadding="10dp"-->
+<!--                        android:padding="8dp"-->
+<!--                        android:width="400dp"-->
+<!--                        android:textSize="16sp"-->
+<!--                        android:fontFamily="sans-serif"-->
+<!--                        android:id="@+id/educationEditTextStepThree"-->
+<!--                        android:hint="Education" />-->
+<!--                </com.google.android.material.textfield.TextInputLayout>-->
+
+                <LinearLayout
+                    android:id="@+id/educationLayout"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:background="@drawable/rect"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginRight="15dp"
+                    android:layout_marginTop="10dp"
                     android:layout_below="@id/workLayout"
-                    android:id="@+id/educationLayout">
-                    <EditText
-                        android:layout_centerHorizontal="true"
+                    android:padding="12dp">
+
+                    <ImageView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="15dp"
-                        android:layout_marginRight="15dp"
-                        android:layout_marginTop="10dp"
-                        android:background="@android:color/transparent"
-                        android:inputType="textPersonName"
-                        android:drawableLeft="@drawable/ic_education"
-                        android:drawableTint="#838383"
-                        android:drawablePadding="10dp"
-                        android:padding="8dp"
-                        android:width="400dp"
-                        android:textSize="16sp"
-                        android:fontFamily="sans-serif"
-                        android:id="@+id/educationEditTextStepThree"
-                        android:hint="Education" />
-                </com.google.android.material.textfield.TextInputLayout>
+                        android:src="@drawable/ic_education"
+                        />
 
+                    <EditText
+                        android:id="@+id/educationEditTextStepThree"
+                        android:background="#00000000"
+                        android:layout_marginLeft="10dp"
+                        android:hint="Education"
+                        android:textColorHint="@color/TransparentWhite"
+                        android:inputType="textPersonName"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+                </LinearLayout>
                 <!-- Mobile number layout -->
-                <com.google.android.material.textfield.TextInputLayout
+<!--                <com.google.android.material.textfield.TextInputLayout-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_below="@id/educationLayout"-->
+<!--                    android:id="@+id/bioLayout">-->
+<!--                    <EditText-->
+<!--                        android:layout_centerHorizontal="true"-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:layout_marginLeft="15dp"-->
+<!--                        android:layout_marginRight="15dp"-->
+<!--                        android:layout_marginTop="10dp"-->
+<!--                        android:background="@android:color/transparent"-->
+<!--                        android:inputType="textPersonName"-->
+<!--                        android:drawableLeft="@drawable/ic_bio"-->
+<!--                        android:drawableTint="#838383"-->
+<!--                        android:drawablePadding="10dp"-->
+<!--                        android:padding="8dp"-->
+<!--                        android:width="400dp"-->
+<!--                        android:textSize="16sp"-->
+<!--                        android:fontFamily="sans-serif"-->
+<!--                        android:id="@+id/bioEditTextStepThree"-->
+<!--                        android:hint="Tell us abit about yourself" />-->
+<!--                </com.google.android.material.textfield.TextInputLayout>-->
+
+                <LinearLayout
+                    android:id="@+id/bioLayout"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:background="@drawable/rect"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginRight="15dp"
+                    android:layout_marginTop="10dp"
                     android:layout_below="@id/educationLayout"
-                    android:id="@+id/bioLayout">
-                    <EditText
-                        android:layout_centerHorizontal="true"
+                    android:padding="12dp">
+
+                    <ImageView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="15dp"
-                        android:layout_marginRight="15dp"
-                        android:layout_marginTop="10dp"
-                        android:background="@android:color/transparent"
-                        android:inputType="textPersonName"
-                        android:drawableLeft="@drawable/ic_bio"
-                        android:drawableTint="#838383"
-                        android:drawablePadding="10dp"
-                        android:padding="8dp"
-                        android:width="400dp"
-                        android:textSize="16sp"
-                        android:fontFamily="sans-serif"
+                        android:src="@drawable/ic_bio"
+                        />
+
+                    <EditText
                         android:id="@+id/bioEditTextStepThree"
-                        android:hint="Tell us abit about yourself" />
-                </com.google.android.material.textfield.TextInputLayout>
-
-
+                        android:background="#00000000"
+                        android:layout_marginLeft="10dp"
+                        android:hint="Tell us abit about yourself"
+                        android:textColorHint="@color/TransparentWhite"
+                        android:inputType="textPersonName"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+                </LinearLayout>
 
                 <!-- Gender layout -->
                 <RadioGroup
