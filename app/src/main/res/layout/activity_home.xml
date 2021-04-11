@@ -35,8 +35,6 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
-
-
                     <RelativeLayout
                         android:layout_width="match_parent"
                         android:layout_height="35dp"
@@ -51,6 +49,20 @@
                             android:layout_height="30dp"
                             android:background="@drawable/pink_out_line"
                             android:orientation="horizontal">
+
+                            <RadioButton
+                                android:layout_marginRight="1dp"
+                                android:layout_marginTop="1dp"
+                                android:layout_marginBottom="1dp"
+                                android:id="@+id/shareButton"
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="1"
+                                android:background="@drawable/toggle_widget_background"
+                                android:button="@null"
+                                android:gravity="center"
+                                android:text="Share route"
+                                android:textColor="@color/white" />
 
                             <RadioButton
                                 android:layout_marginTop="1dp"
@@ -86,7 +98,8 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="180dp">
+                android:layout_height="180dp"
+                android:orientation="vertical">
                 <androidx.cardview.widget.CardView
                     card_view:cardElevation="20dp"
                     xmlns:card_view="http://schemas.android.com/apk/res-auto"
@@ -185,6 +198,41 @@
                     android:layout_gravity="bottom"
                     android:layout_marginBottom="100dp"
                     android:id="@+id/directionsBtn"/>
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_alignParentBottom="true">
+                <com.google.android.material.floatingactionbutton.FloatingActionButton
+                    android:id="@+id/myLocationButton"
+                    android:visibility="gone"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom|right"
+                    android:layout_marginBottom="20dp"
+                    android:layout_marginRight="20dp"
+                    android:backgroundTint="@color/lightgrey"
+                    android:src="@android:drawable/ic_menu_mylocation"
+                    app:borderWidth="0dp"
+                    app:elevation="6dp"
+                    app:pressedTranslationZ="12dp"
+                    app:fabSize="normal" />
+                <Button
+                    android:id="@+id/btn_start_trip"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:visibility="gone"
+                    android:text="start share"
+                    android:clickable="false"
+                    android:layout_marginRight="20dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginBottom="13dp"
+                    android:layout_alignParentBottom="true"
+                    android:textColor="@android:color/white"
+                    android:background="@drawable/btn_style_green" />
             </LinearLayout>
             
 

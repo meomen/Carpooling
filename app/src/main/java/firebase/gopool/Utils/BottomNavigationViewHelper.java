@@ -56,9 +56,18 @@ public class BottomNavigationViewHelper {
                         } else {
                             break;
                         }
+
+                    case R.id.menu_frequent_route:
+                        if (view.getSelectedItemId() != R.id.menu_frequent_route) {
+                            Intent intentBooked = new Intent(context, BookedActivity.class); //ACTIVITY_NUMBER = 3
+                            context.startActivity(intentBooked);
+                            break;
+                        } else {
+                            break;
+                        }
                     case R.id.menu_account:
                         if (view.getSelectedItemId() != R.id.menu_account) {
-                            Intent intentAccount = new Intent(context, AccountActivity.class); //ACTIVITY_NUMBER = 3
+                            Intent intentAccount = new Intent(context, AccountActivity.class); //ACTIVITY_NUMBER = 4
                             context.startActivity(intentAccount);
                             break;
                         } else {

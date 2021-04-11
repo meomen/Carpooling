@@ -68,6 +68,7 @@ import com.google.android.gms.maps.model.Polyline;
 import com.google.android.gms.maps.model.PolylineOptions;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -137,11 +138,12 @@ public class HomeActivity extends AppCompatActivity implements OnMapReadyCallbac
 
     //Widgets
     private AutoCompleteTextView destinationTextview, locationTextView;
-    private Button mSearchBtn, mDirectionsBtn, mSwitchTextBtn;
-    private RadioButton findButton, offerButton;
+    private Button mSearchBtn, mDirectionsBtn, mSwitchTextBtn, mStartTrip;
+    private RadioButton findButton, offerButton,shareButton;
     private RadioGroup mRideSelectionRadioGroup;
     private BottomNavigationView bottomNavigationView;
     private ImageView mLocationBtn;
+    private FloatingActionButton currentLocationFAB;
 
     //Firebase
     private FirebaseAuth mAuth;
@@ -168,6 +170,7 @@ public class HomeActivity extends AppCompatActivity implements OnMapReadyCallbac
             //Disables offer button when the user is logged in and they have no car
             findButton = (RadioButton) findViewById(R.id.findButton);
             offerButton = (RadioButton) findViewById(R.id.offerButton);
+            shareButton = (RadioButton) findViewById(R.id.shareButton);
 
             getUserInformation(userID);
             ////////////////////////////////////////////////////////////////////////
@@ -196,6 +199,7 @@ public class HomeActivity extends AppCompatActivity implements OnMapReadyCallbac
         mSearchBtn = (Button) findViewById(R.id.searchBtn);
         mSwitchTextBtn = (Button) findViewById(R.id.switchTextBtn);
         mDirectionsBtn = (Button) findViewById(R.id.directionsBtn);
+        mStartTrip = (Button) findViewById(R.id.btn_start_trip);
         mRideSelectionRadioGroup = (RadioGroup) findViewById(R.id.toggle);
         mLocationBtn = (ImageView) findViewById(R.id.locationImage);
 
@@ -245,8 +249,29 @@ public class HomeActivity extends AppCompatActivity implements OnMapReadyCallbac
                     findRideActivity.putExtra("currentLatitue", currentLatitude);
                     findRideActivity.putExtra("currentLongtitude", currentLongtitude);
                     startActivity(findRideActivity);
-                } else {
+                }
+                else if (whichIndex == R.id.shareButton) {
+
+                }
+                else {
                     Toast.makeText(mContext, "Please enter location and destination", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+
+        userLocationFAB();
+        mRideSelectionRadioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup radioGroup, int checkedId) {
+                if(checkedId == R.id.shareButton) {
+                    mStartTrip.setVisibility(View.VISIBLE);
+                    currentLocationFAB.setVisibility(View.VISIBLE);
+                    moveCameraNoMarker(new LatLng(mMap.getMyLocation().getLatitude(),mMap.getMyLocation().getLongitude()),17f,"");
+                }
+                else {
+                    mStartTrip.setVisibility(View.GONE);
+                    currentLocationFAB.setVisibility(View.GONE);
+                    moveCameraNoMarker(new LatLng(mMap.getMyLocation().getLatitude(),mMap.getMyLocation().getLongitude()),DEFAULT_ZOOM,"");
                 }
             }
         });
@@ -1016,6 +1041,10 @@ public class HomeActivity extends AppCompatActivity implements OnMapReadyCallbac
                     offerButton.setAlpha(.5f);
                     offerButton.setClickable(false);
 
+                    shareButton.setEnabled(false);
+                    shareButton.setAlpha(.5f);
+                    shareButton.setClickable(false);
+
                 }
             }
 
@@ -1054,6 +1083,21 @@ public class HomeActivity extends AppCompatActivity implements OnMapReadyCallbac
 //            });
 //            jsonMetaData.execute("");
 //        }
+    }
+
+    private void userLocationFAB(){
+        currentLocationFAB = (FloatingActionButton) findViewById(R.id.myLocationButton);
+        currentLocationFAB.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                if(mMap.getMyLocation() != null) { // Check to ensure coordinates aren't null, probably a better way of doing this...
+                    moveCameraNoMarker(new LatLng(mMap.getMyLocation().getLatitude(), mMap.getMyLocation().getLongitude()),
+                            17f,
+                            "My location");
+                }
+            }
+        });
     }
 
     @Override
