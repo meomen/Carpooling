@@ -6,7 +6,11 @@
         android:enabled="true"
         android:icon="@drawable/ic_location"
         android:title="" />
-
+    <item
+        android:id="@+id/menu_frequent_route"
+        android:enabled="true"
+        android:icon="@drawable/ic_frequent_map"
+        android:title="" />
     <item
         android:id="@+id/menu_rides"
         android:enabled="true"
@@ -17,11 +21,6 @@
         android:id="@+id/menu_booked"
         android:enabled="true"
         android:icon="@drawable/ic_booked"
-        android:title="" />
-    <item
-        android:id="@+id/menu_frequent_route"
-        android:enabled="true"
-        android:icon="@drawable/ic_frequent_map"
         android:title="" />
 
     <item

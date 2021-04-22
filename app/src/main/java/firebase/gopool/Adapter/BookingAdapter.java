@@ -129,7 +129,6 @@ public class BookingAdapter extends RecyclerView.Adapter<BookingAdapter.MyViewHo
             profile_photo = (CircleImageView) itemView.findViewById(R.id.indiviual_profile_picture);
             bookingStatusTextview = (TextView) itemView.findViewById(R.id.bookingStatusTextview);
 
-
         }
     }
 

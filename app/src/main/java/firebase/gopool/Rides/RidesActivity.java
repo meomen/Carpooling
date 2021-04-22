@@ -40,7 +40,7 @@ import firebase.gopool.models.Ride;
 public class RidesActivity extends AppCompatActivity {
 
     private static final String TAG = "RidesActivity";
-    private static final int ACTIVITY_NUMBER = 1;
+    private static final int ACTIVITY_NUMBER = 2;
 
     //View variables
     private BottomNavigationView bottomNavigationView;

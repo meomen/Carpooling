@@ -14,6 +14,7 @@ import android.widget.TextView;
 
 import firebase.gopool.Account.AccountActivity;
 import firebase.gopool.Booked.BookedActivity;
+import firebase.gopool.FrequentRoute.FrequentRouteActivity;
 import firebase.gopool.Home.HomeActivity;
 import firebase.gopool.R;
 import firebase.gopool.Rides.RidesActivity;
@@ -28,55 +29,52 @@ public class BottomNavigationViewHelper {
 
     public static void enableNavigation(final Context context, final BottomNavigationView view){
 
-        view.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
-                switch (menuItem.getItemId()){
-                    case R.id.menu_location:
-                        if (view.getSelectedItemId() != R.id.menu_location) {
-                            Intent intentLocation = new Intent(context, HomeActivity.class); //ACTIVITY_NUMBER = 0
-                            context.startActivity(intentLocation);
-                            break;
-                        } else {
-                            break;
-                        }
-                    case R.id.menu_rides:
-                        if (view.getSelectedItemId() != R.id.menu_rides) {
-                            Intent intentRides = new Intent(context, RidesActivity.class); //ACTIVITY_NUMBER = 1
-                            context.startActivity(intentRides);
-                            break;
-                        } else {
-                            break;
-                        }
-                    case R.id.menu_booked:
-                        if (view.getSelectedItemId() != R.id.menu_booked) {
-                            Intent intentBooked = new Intent(context, BookedActivity.class); //ACTIVITY_NUMBER = 2
-                            context.startActivity(intentBooked);
-                            break;
-                        } else {
-                            break;
-                        }
+        view.setOnNavigationItemSelectedListener(menuItem -> {
+            switch (menuItem.getItemId()){
+                case R.id.menu_location:
+                    if (view.getSelectedItemId() != R.id.menu_location) {
+                        Intent intentLocation = new Intent(context, HomeActivity.class); //ACTIVITY_NUMBER = 0
+                        context.startActivity(intentLocation);
+                        break;
+                    } else {
+                        break;
+                    }
+                case R.id.menu_rides:
+                    if (view.getSelectedItemId() != R.id.menu_rides) {
+                        Intent intentRides = new Intent(context, RidesActivity.class); //ACTIVITY_NUMBER = 2
+                        context.startActivity(intentRides);
+                        break;
+                    } else {
+                        break;
+                    }
+                case R.id.menu_booked:
+                    if (view.getSelectedItemId() != R.id.menu_booked) {
+                        Intent intentBooked = new Intent(context, BookedActivity.class); //ACTIVITY_NUMBER = 3
+                        context.startActivity(intentBooked);
+                        break;
+                    } else {
+                        break;
+                    }
 
-                    case R.id.menu_frequent_route:
-                        if (view.getSelectedItemId() != R.id.menu_frequent_route) {
-                            Intent intentBooked = new Intent(context, BookedActivity.class); //ACTIVITY_NUMBER = 3
-                            context.startActivity(intentBooked);
-                            break;
-                        } else {
-                            break;
-                        }
-                    case R.id.menu_account:
-                        if (view.getSelectedItemId() != R.id.menu_account) {
-                            Intent intentAccount = new Intent(context, AccountActivity.class); //ACTIVITY_NUMBER = 4
-                            context.startActivity(intentAccount);
-                            break;
-                        } else {
-                            break;
-                        }
-                }
-
-                return false;
+                case R.id.menu_frequent_route:
+                    if (view.getSelectedItemId() != R.id.menu_frequent_route) {
+                        Intent intentFrequentRoute = new Intent(context, FrequentRouteActivity.class); //ACTIVITY_NUMBER = 1
+                        context.startActivity(intentFrequentRoute);
+                        break;
+                    } else {
+                        break;
+                    }
+                case R.id.menu_account:
+                    if (view.getSelectedItemId() != R.id.menu_account) {
+                        Intent intentAccount = new Intent(context, AccountActivity.class); //ACTIVITY_NUMBER = 4
+                        context.startActivity(intentAccount);
+                        break;
+                    } else {
+                        break;
+                    }
             }
+
+            return false;
         });
     }
 

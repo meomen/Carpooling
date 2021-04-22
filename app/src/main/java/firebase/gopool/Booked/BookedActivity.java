@@ -34,7 +34,7 @@ import firebase.gopool.models.BookingResults;
 public class BookedActivity extends AppCompatActivity {
 
     private static final String TAG = "BookedActivity";
-    private static final int ACTIVITY_NUMBER = 2;
+    private static final int ACTIVITY_NUMBER = 3;
 
     //View variables
     private RelativeLayout mNoResultsFoundLayout;
