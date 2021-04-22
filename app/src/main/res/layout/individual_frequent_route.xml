@@ -9,13 +9,25 @@
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
-        android:layout_height="150dp"
+        android:layout_height="170dp"
         android:id="@+id/bookingCardView"
         app:cardBackgroundColor="@color/lightgrey"
         android:layout_marginLeft="5dp"
         android:layout_marginRight="5dp"
         android:layout_marginBottom="10dp"
         app:cardCornerRadius="10dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="15sp"
+            android:layout_marginBottom="10dp"
+            android:textColor="@color/black"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="9dp"
+            android:textStyle="italic"
+            android:id="@+id/tv_id"
+            android:text="ID:" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -30,14 +42,6 @@
                 android:layout_marginTop="10dp"
                 android:layout_marginRight="10dp"
                 android:layout_marginBottom="5dp">
-
-<!--                <de.hdodenhof.circleimageview.CircleImageView-->
-<!--                    android:layout_width="80dp"-->
-<!--                    android:src="@drawable/blank_profile_picture"-->
-<!--                    android:id="@+id/indiviual_profile_picture"-->
-<!--                    android:layout_gravity="center_vertical"-->
-<!--                    android:layout_height="80dp" />-->
-
 
                 <TextView
                     android:layout_width="match_parent"
@@ -75,19 +79,31 @@
                     android:textStyle="bold"
                     android:id="@+id/individualDateTxt"
                     android:text="Time: " />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/individualDateTxt"
+                    android:textSize="16sp"
+                    android:textColor="@color/bt_blue_pressed"
+                    android:layout_marginLeft="30dp"
+                    android:layout_marginTop="5dp"
+                    android:id="@+id/tv_type_share"
+                    android:text="You are: " />
+
 
 
                 <TextView
+                    android:id="@+id/lengthTxt"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="22sp"
-                    android:textColor="@color/black"
-                    android:layout_alignParentRight="true"
                     android:layout_alignParentTop="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginTop="10dp"
                     android:gravity="end"
-                    android:textStyle="italic"
-                    android:id="@+id/lengthTxt"
-                    android:text="km" />
+                    android:text="km"
+                    android:textColor="@color/black"
+                    android:textSize="22sp"
+                    android:textStyle="italic" />
 
 
 

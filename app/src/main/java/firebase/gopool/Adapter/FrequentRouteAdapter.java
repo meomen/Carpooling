@@ -46,6 +46,12 @@ public class FrequentRouteAdapter extends RecyclerView.Adapter<FrequentRouteAdap
             holder.cardView.setCardBackgroundColor(Color.rgb(234, 255, 236));
             holder.frequentRouteStatusTextview.setText("You have shared!");
             holder.frequentRouteStatusTextview.setTextColor(Color.rgb(0, 160, 66));
+            if(route.getType_shared() != null && !route.getType_shared().equals("none")) {
+                holder.tv_type_share.setText("Yout are: "+route.getType_shared());
+            }
+        }
+        else {
+            holder.tv_type_share.setText("");
         }
 
         holder.view.setOnClickListener(view -> {
@@ -54,21 +60,22 @@ public class FrequentRouteAdapter extends RecyclerView.Adapter<FrequentRouteAdap
             mContext.startActivity(intent);
         });
 
-        if (to.length() > 20) {
-            to = to.substring(0, Math.min(to.length(), 21));
+        if (to.length() > 30) {
+            to = to.substring(0, Math.min(to.length(), 31));
             to = to + "...";
             holder.to.setText(to);
         } else {
             holder.to.setText(to);
         }
 
-        if (from.length() > 20) {
-            from = from.substring(0, Math.min(from.length(), 21));
+        if (from.length() > 30) {
+            from = from.substring(0, Math.min(from.length(), 31));
             from = from + "...";
             holder.from.setText(from);
         } else {
             holder.from.setText(from);
         }
+        holder.tv_id.setText("ID: #"+route.getId());
 
         holder.length.setText(route.getLength_route() + " km");
         holder.date.setText("Time: " + route.getTime_start() + " - " + route.getTime_destination());
@@ -82,7 +89,7 @@ public class FrequentRouteAdapter extends RecyclerView.Adapter<FrequentRouteAdap
     public class MyViewHolder extends RecyclerView.ViewHolder {
 
         LinearLayout view;
-        TextView from, to, date, length, frequentRouteStatusTextview;
+        TextView from, to, date, length, frequentRouteStatusTextview, tv_id,tv_type_share;
         CardView cardView;
 
         public MyViewHolder(@NonNull View itemView) {
@@ -94,6 +101,8 @@ public class FrequentRouteAdapter extends RecyclerView.Adapter<FrequentRouteAdap
             to = (TextView) itemView.findViewById(R.id.toTxt);
             date = (TextView) itemView.findViewById(R.id.individualDateTxt);
             length = (TextView) itemView.findViewById(R.id.lengthTxt);
+            tv_id = (TextView) itemView.findViewById(R.id.tv_id);
+            tv_type_share = (TextView) itemView.findViewById(R.id.tv_type_share);
             frequentRouteStatusTextview = (TextView) itemView.findViewById(R.id.frequentRouteStatusTextview);
 
         }

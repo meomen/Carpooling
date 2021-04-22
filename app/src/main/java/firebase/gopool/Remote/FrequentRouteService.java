@@ -20,5 +20,5 @@ public interface FrequentRouteService {
     Call<List<FrequentRouteResults>> getRouteByAccountId(@Query("account_id") String account_id);
 
     @PUT("route/is_shared")
-    Call<ExceptionResult> updateIsShared(@Query("is_shared") int is_shared, @Query("id") int id);
+    Call<ExceptionResult> updateIsShared(@Query("is_shared") int is_shared, @Query("type_shared") String type_shared, @Query("id") int id);
 }

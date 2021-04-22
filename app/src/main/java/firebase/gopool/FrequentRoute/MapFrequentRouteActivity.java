@@ -45,6 +45,8 @@ public class MapFrequentRouteActivity extends AppCompatActivity implements OnMap
 
     private FrequentRouteService mService;
 
+    private String type_share = "Participant";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -85,7 +87,7 @@ public class MapFrequentRouteActivity extends AppCompatActivity implements OnMap
 
     private void setOnclick() {
         btn_share.setOnClickListener(view -> {
-            mService.updateIsShared(1,route.getId())
+            mService.updateIsShared(1,type_share,route.getId())
                     .enqueue(new Callback<ExceptionResult>() {
                         @Override
                         public void onResponse(Call<ExceptionResult> call, Response<ExceptionResult> response) {
@@ -102,7 +104,7 @@ public class MapFrequentRouteActivity extends AppCompatActivity implements OnMap
                     });
         });
         btn_cancle_share.setOnClickListener(view -> {
-            mService.updateIsShared(0,route.getId())
+            mService.updateIsShared(0,"none",route.getId())
                     .enqueue(new Callback<ExceptionResult>() {
                         @Override
                         public void onResponse(Call<ExceptionResult> call, Response<ExceptionResult> response) {
@@ -117,6 +119,14 @@ public class MapFrequentRouteActivity extends AppCompatActivity implements OnMap
                             Toast.makeText(MapFrequentRouteActivity.this,"Cancle share failed!",Toast.LENGTH_SHORT).show();
                         }
                     });
+        });
+
+        radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup radioGroup, int i) {
+                RadioButton rb=(RadioButton)findViewById(i);
+                type_share = rb.getText().toString();
+            }
         });
     }
 
