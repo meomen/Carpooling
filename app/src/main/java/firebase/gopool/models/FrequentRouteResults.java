@@ -31,13 +31,14 @@ public class FrequentRouteResults implements Serializable {
     @SerializedName("length_route")
     private double length_route;
     @SerializedName("is_shared")
-    private boolean isShared;
+    private int is_shared;
 
 
     public FrequentRouteResults() {
     }
 
-    public FrequentRouteResults(String frequent_route_id, String user_id, String username, String address_start, double lat_start, double lng_start, String address_destination, double lat_end, double lng_end, String time_start, String time_destination, double length_route, boolean isShared) {
+    public FrequentRouteResults(int id, String frequent_route_id, String user_id, String address_start, double lat_start, double lng_start, String address_destination, double lat_end, double lng_end, String time_start, String time_destination, double length_route, int is_shared) {
+        this.id = id;
         this.frequent_route_id = frequent_route_id;
         this.user_id = user_id;
         this.address_start = address_start;
@@ -49,7 +50,7 @@ public class FrequentRouteResults implements Serializable {
         this.time_start = time_start;
         this.time_destination = time_destination;
         this.length_route = length_route;
-        this.isShared = isShared;
+        this.is_shared = is_shared;
     }
 
     public int getId() {
@@ -149,11 +150,11 @@ public class FrequentRouteResults implements Serializable {
         this.time_destination = time_destination;
     }
 
-    public boolean isShared() {
-        return isShared;
+    public int getIs_shared() {
+        return is_shared;
     }
 
-    public void setShared(boolean shared) {
-        isShared = shared;
+    public void setIs_shared(int is_shared) {
+        this.is_shared = is_shared;
     }
 }

@@ -25,8 +25,14 @@ import com.google.android.gms.maps.model.MarkerOptions;
 import firebase.gopool.Home.HomeActivity;
 import firebase.gopool.MapDirectionHelper.FetchURL;
 import firebase.gopool.MapDirectionHelper.TaskLoadedCallback;
+import firebase.gopool.Model.ExceptionResult;
 import firebase.gopool.R;
+import firebase.gopool.Remote.FrequentRouteClient;
+import firebase.gopool.Remote.FrequentRouteService;
 import firebase.gopool.models.FrequentRouteResults;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class MapFrequentRouteActivity extends AppCompatActivity implements OnMapReadyCallback, TaskLoadedCallback {
     private GoogleMap mMap;
@@ -37,6 +43,7 @@ public class MapFrequentRouteActivity extends AppCompatActivity implements OnMap
     private Button btn_share,btn_cancle_share;
     private RadioGroup radioGroup;
 
+    private FrequentRouteService mService;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,22 +63,61 @@ public class MapFrequentRouteActivity extends AppCompatActivity implements OnMap
         btn_share = (Button) findViewById(R.id.btn_share);
         btn_cancle_share = (Button) findViewById(R.id.btn_cancle_share);
         radioGroup = (RadioGroup) findViewById(R.id.radio_group);
+        mService = FrequentRouteClient.getFrequentRouteClient();
 
+        if(getIntent() != null) {
+            route = (FrequentRouteResults) getIntent().getSerializableExtra("data");
+        }
+
+        if(route.getIs_shared() == 1) {
+            btn_cancle_share.setVisibility(View.VISIBLE);
+            btn_share.setVisibility(View.GONE);
+            layout_radiobtn.setVisibility(View.GONE);
+        }
+        else {
+            btn_cancle_share.setVisibility(View.GONE);
+            btn_share.setVisibility(View.VISIBLE);
+            layout_radiobtn.setVisibility(View.VISIBLE);
+        }
 
         setOnclick();
     }
 
     private void setOnclick() {
         btn_share.setOnClickListener(view -> {
+            mService.updateIsShared(1,route.getId())
+                    .enqueue(new Callback<ExceptionResult>() {
+                        @Override
+                        public void onResponse(Call<ExceptionResult> call, Response<ExceptionResult> response) {
+                            if(response.isSuccessful()) {
+                                Toast.makeText(MapFrequentRouteActivity.this,"Share successful!",Toast.LENGTH_SHORT).show();
+                                finish();
+                            }
+                        }
 
-            Toast.makeText(this,"Share successful!",Toast.LENGTH_SHORT).show();
-            finish();
+                        @Override
+                        public void onFailure(Call<ExceptionResult> call, Throwable t) {
+                            Toast.makeText(MapFrequentRouteActivity.this,"Share failed!",Toast.LENGTH_SHORT).show();
+                        }
+                    });
         });
         btn_cancle_share.setOnClickListener(view -> {
-            Toast.makeText(this,"Cancle share successful!",Toast.LENGTH_SHORT).show();
-            finish();
-        });
+            mService.updateIsShared(0,route.getId())
+                    .enqueue(new Callback<ExceptionResult>() {
+                        @Override
+                        public void onResponse(Call<ExceptionResult> call, Response<ExceptionResult> response) {
+                            if(response.isSuccessful()) {
+                                Toast.makeText(MapFrequentRouteActivity.this,"Cancle share successful!",Toast.LENGTH_SHORT).show();
+                                finish();
+                            }
+                        }
 
+                        @Override
+                        public void onFailure(Call<ExceptionResult> call, Throwable t) {
+                            Toast.makeText(MapFrequentRouteActivity.this,"Cancle share failed!",Toast.LENGTH_SHORT).show();
+                        }
+                    });
+        });
     }
 
     private void zoomMap(LatLng startPoint, LatLng endPoint) {
@@ -132,9 +178,6 @@ public class MapFrequentRouteActivity extends AppCompatActivity implements OnMap
         mMap.setMyLocationEnabled(false);
         mMap.getUiSettings().setMyLocationButtonEnabled(false);
 
-        if(getIntent() != null) {
-            route = (FrequentRouteResults) getIntent().getSerializableExtra("data");
-        }
         if (route != null) {
             LatLng startPoint = new LatLng(route.getLat_start(),route.getLng_start());
             LatLng endPoint = new LatLng(route.getLat_end(),route.getLng_end());

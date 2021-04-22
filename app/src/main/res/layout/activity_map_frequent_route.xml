@@ -85,23 +85,9 @@
             android:layout_alignParentBottom="true"
             android:textColor="@android:color/white"
             android:background="@drawable/btn_style_green" />
-        <Button
-            android:id="@+id/btn_cancle_share"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:visibility="gone"
-            android:text="I arive"
-            android:clickable="false"
-            android:layout_marginRight="20dp"
-            android:layout_marginLeft="20dp"
-            android:layout_marginBottom="13dp"
-            android:layout_alignParentBottom="true"
-            android:textColor="@android:color/white"
-            android:backgroundTint="@color/bt_blue_pressed"
-            android:background="@drawable/btn_style_green" />
 
         <Button
-            android:id="@+id/btn_stop_trip"
+            android:id="@+id/btn_cancle_share"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="20dp"
