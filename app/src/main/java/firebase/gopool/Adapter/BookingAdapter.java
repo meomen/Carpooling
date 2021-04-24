@@ -18,6 +18,7 @@ import android.widget.TextView;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
+import java.util.UUID;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 import firebase.gopool.Pickup.PickupActivity;
@@ -56,7 +57,7 @@ public class BookingAdapter extends RecyclerView.Adapter<BookingAdapter.MyViewHo
         final String pickupTime = ride.get(position).getPickupTime();
         String from = "From: " + ride.get(position).getLocation().replaceAll("\n", ", ");
         String to = "To: " + ride.get(position).getDestination().replaceAll("\n", ", ");
-        final String cost = String.valueOf("£ " + ride.get(position).getCost()) + ".00";
+        final String cost = String.valueOf(ride.get(position).getCost()) + " VND";
         final String pickupLocation = ride.get(position).getPickupLocation();
         final String date = ride.get(position).getDateOfJourney() + " - " + ride.get(position).getPickupTime();
 
@@ -64,6 +65,16 @@ public class BookingAdapter extends RecyclerView.Adapter<BookingAdapter.MyViewHo
             holder.cardView.setCardBackgroundColor(Color.rgb(234, 255, 236));
             holder.bookingStatusTextview.setText("Booking accepted!");
             holder.bookingStatusTextview.setTextColor(Color.rgb(0, 160, 66));
+
+            try{
+                UUID id = UUID.fromString(ride.get(position).getRide_id());
+                holder.cardView.setCardBackgroundColor(Color.rgb(255, 255, 212));
+                holder.tv_system_suggest.setVisibility(View.VISIBLE);
+            }
+            catch (IllegalArgumentException exception){
+
+            }
+
 
             holder.view.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -112,7 +123,7 @@ public class BookingAdapter extends RecyclerView.Adapter<BookingAdapter.MyViewHo
     class MyViewHolder extends RecyclerView.ViewHolder
     {
         LinearLayout view;
-        TextView rides, from, to, date, seats, costs, bookingStatusTextview;
+        TextView rides, from, to, date, seats, costs, bookingStatusTextview,tv_system_suggest;
         CircleImageView profile_photo;
         RatingBar ratingBar;
         CardView cardView;
@@ -128,7 +139,7 @@ public class BookingAdapter extends RecyclerView.Adapter<BookingAdapter.MyViewHo
             costs = (TextView) itemView.findViewById(R.id.priceTxt);
             profile_photo = (CircleImageView) itemView.findViewById(R.id.indiviual_profile_picture);
             bookingStatusTextview = (TextView) itemView.findViewById(R.id.bookingStatusTextview);
-
+            tv_system_suggest = (TextView) itemView.findViewById(R.id.tv_system_suggest);
         }
     }
 

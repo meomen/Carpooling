@@ -71,7 +71,7 @@ public class MapFrequentRouteActivity extends AppCompatActivity implements OnMap
             route = (FrequentRouteResults) getIntent().getSerializableExtra("data");
         }
 
-        if(route.getIs_shared() == 1) {
+        if(route.getIs_shared() != 0) {
             btn_cancle_share.setVisibility(View.VISIBLE);
             btn_share.setVisibility(View.GONE);
             layout_radiobtn.setVisibility(View.GONE);
@@ -87,7 +87,7 @@ public class MapFrequentRouteActivity extends AppCompatActivity implements OnMap
 
     private void setOnclick() {
         btn_share.setOnClickListener(view -> {
-            mService.updateIsShared(1,type_share,route.getId())
+            mService.updateIsShared(1,type_share,route.getId(),route.getUser_id())
                     .enqueue(new Callback<ExceptionResult>() {
                         @Override
                         public void onResponse(Call<ExceptionResult> call, Response<ExceptionResult> response) {
@@ -104,7 +104,7 @@ public class MapFrequentRouteActivity extends AppCompatActivity implements OnMap
                     });
         });
         btn_cancle_share.setOnClickListener(view -> {
-            mService.updateIsShared(0,"none",route.getId())
+            mService.updateIsShared(0,"none",route.getId(),route.getUser_id())
                     .enqueue(new Callback<ExceptionResult>() {
                         @Override
                         public void onResponse(Call<ExceptionResult> call, Response<ExceptionResult> response) {

@@ -1,8 +1,11 @@
+
 package firebase.gopool.Adapter;
 
 import android.content.Context;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
+
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,6 +20,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.UUID;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 import firebase.gopool.R;
@@ -53,10 +57,14 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
         final String seats = String.valueOf(ride.get(position).getSeatsAvailable() + " Seats Left!");
         String from = "From: " + ride.get(position).getCurrentLocation();
         String to = "To: " + ride.get(position).getDestination();
-        final String date = parseDateToddMMyyyy(ride.get(position).getDateOfJourney()) + " - " + ride.get(position).getPickupTime() + " PM";
-        final String cost = String.valueOf("£ " + ride.get(position).getCost()) + ".00";
+        String dateraw = parseDateToddMMyyyy(ride.get(position).getDateOfJourney());
+        if(dateraw == null) {
+            dateraw = ride.get(position).getDateOfJourney();
+        }
+        final String date = dateraw + " - " + ride.get(position).getPickupTime() ;
+        final String cost = String.valueOf(ride.get(position).getCost()) + " VND";
         final Float rating = (float) ride.get(position).getUserRating();
-        final String dateOnly = String.valueOf(ride.get(position).getPickupTime() + " PM");
+        final String dateOnly = String.valueOf(ride.get(position).getPickupTime());
         final String extraTime = String.valueOf(ride.get(position).getExtraTime() + " mins");
         final String fromOnly = parseLocation(ride.get(position).getCurrentLocation());
         final String toOnly = parseLocation(ride.get(position).getDestination());
@@ -64,6 +72,15 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
         final String duration = ride.get(position).getDuration();
         final String completeRides = String.valueOf(ride.get(position).getCompleteRides());
         final String pickupLocation = ride.get(position).getPickupLocation();
+
+        try{
+            UUID id = UUID.fromString(ride.get(position).getRideID());
+            holder.cardView.setCardBackgroundColor(Color.rgb(255, 255, 212));
+            holder.tv_system_suggest.setVisibility(View.VISIBLE);
+        }
+        catch (IllegalArgumentException exception){
+
+        }
 
 
         holder.rides.setText(rides);
@@ -107,14 +124,16 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
 
     class MyViewHolder extends RecyclerView.ViewHolder
     {
+        CardView cardView;
         LinearLayout view;
-        TextView rides, from, to, date, seats, costs;
+        TextView rides, from, to, date, seats, costs,tv_system_suggest;
         CircleImageView profile_photo;
         RatingBar ratingBar;
 
         public MyViewHolder(View itemView) {
             super(itemView);
 
+            cardView = (CardView)itemView.findViewById(R.id.rideCardView);
             view = (LinearLayout) itemView.findViewById(R.id.view);
             rides = (TextView) itemView.findViewById(R.id.indivcompletedRidesTxt);
             from = (TextView) itemView.findViewById(R.id.fromTxt);
@@ -126,6 +145,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
             ratingBar = (RatingBar) itemView.findViewById(R.id.individualRatingBar);
 
             profile_photo = (CircleImageView) itemView.findViewById(R.id.indiviual_profile_picture);
+            tv_system_suggest = (TextView) itemView.findViewById(R.id.tv_system_suggest);
 
         }
     }

@@ -275,7 +275,7 @@ public class PaymentActivity extends AppCompatActivity {
     }
 
     private String getCurrentAmount(){
-        return mEditAmount.getText().toString().split("£")[1];
+        return mEditAmount.getText().toString().split("VND")[1];
     }
 
     /*------------------------------- Request booking after payment confirmation ---------------------------------- */

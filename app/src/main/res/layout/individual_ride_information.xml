@@ -7,12 +7,24 @@
     android:layout_height="wrap_content">
 
     <androidx.cardview.widget.CardView
+        android:id="@+id/rideCardView"
         android:layout_width="match_parent"
         android:layout_height="150dp"
         android:layout_marginLeft="5dp"
         android:layout_marginRight="5dp"
         android:layout_marginBottom="10dp"
         app:cardCornerRadius="10dp">
+
+        <TextView
+            android:id="@+id/tv_system_suggest"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/system_suggest"
+            android:textStyle="bold"
+            android:layout_gravity="center_horizontal"
+            android:textColor="@color/quantum_orange"
+            android:visibility="gone"
+            />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -78,13 +90,13 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/toTxt"
-                    android:textSize="22sp"
+                    android:textSize="16sp"
                     android:textColor="@color/black"
                     android:layout_alignParentTop="true"
                     android:gravity="end"
-                    android:textStyle="bold"
+                    android:textStyle="italic"
                     android:id="@+id/priceTxt"
-                    android:text="£ 6.00" />
+                    android:text="0 VND" />
 
                 <RatingBar
                     android:id="@+id/individualRatingBar"

@@ -122,7 +122,7 @@ public class FrequentRouteActivity extends AppCompatActivity {
     }
 
     private void createRecycleView() {
-        mFrequentService.getRouteByAccountId("KXjWaGMLk0NTfArXhxjzs9zMKi43")
+        mFrequentService.getRouteByAccountId(user_id)
                 .enqueue(new Callback<List<FrequentRouteResults>>() {
                     @Override
                     public void onResponse(Call<List<FrequentRouteResults>> call, Response<List<FrequentRouteResults>> response) {

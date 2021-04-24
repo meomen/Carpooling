@@ -54,11 +54,11 @@ public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.MyViewHold
         String seats = String.valueOf(ride.get(position).getSeatsAvailable() + " Seats Left!");
         String from = "From: " + ride.get(position).getCurrentLocation();
         String to = "To: " + ride.get(position).getDestination();
-        final String date = parseDateToddMMyyyy(ride.get(position).getDateOfJourney()) + " - " + ride.get(position).getPickupTime() + " PM";
+        final String date = parseDateToddMMyyyy(ride.get(position).getDateOfJourney()) + " - " + ride.get(position).getPickupTime();
         final String dateOnly = parseDateToddMMyyyy(ride.get(position).getDateOfJourney());
-        final String cost = String.valueOf("£ " + ride.get(position).getCost()) + ".00";
+        final String cost = String.valueOf( ride.get(position).getCost()) + " VND";
         final Float rating = (float) ride.get(position).getUserRating();
-        final String pickupTime = String.valueOf(ride.get(position).getPickupTime() + " PM");
+        final String pickupTime = String.valueOf(ride.get(position).getPickupTime());
         final String extraTime = String.valueOf(ride.get(position).getExtraTime() + " mins");
         final String fromOnly = parseLocation(ride.get(position).getCurrentLocation());
         final String toOnly = parseLocation(ride.get(position).getDestination());

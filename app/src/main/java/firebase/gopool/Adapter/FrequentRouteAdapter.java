@@ -42,7 +42,7 @@ public class FrequentRouteAdapter extends RecyclerView.Adapter<FrequentRouteAdap
         String from = "From: " + route.getAddress_start().replaceAll("\n", ", ");
         String to = "To: " + route.getAddress_destination().replaceAll("\n", ", ");
 
-        if (route.getIs_shared() == 1) {
+        if (route.getIs_shared() != 0) {
             holder.cardView.setCardBackgroundColor(Color.rgb(234, 255, 236));
             holder.frequentRouteStatusTextview.setText("You have shared!");
             holder.frequentRouteStatusTextview.setTextColor(Color.rgb(0, 160, 66));

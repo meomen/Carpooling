@@ -92,14 +92,14 @@
                         android:layout_height="wrap_content"
                         android:textSize="14sp"
                         android:id="@+id/costHeadingTxt"
-                        android:text="Cost (£)" />
+                        android:text="Cost (VND)" />
 
                     <EditText
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textSize="20sp"
                         android:id="@+id/costEditText"
-                        android:hint="£££"
+                        android:hint="VND"
                         android:inputType="number"
                         android:textColor="@color/black"
                         android:background="@android:color/transparent"

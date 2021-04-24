@@ -126,4 +126,10 @@
 
     <string name="pref_title_vibrate">Vibrate</string>
     <string name="title_activity_payment">PaymentActivity</string>
+
+    <string name="radio_button_1">Participant</string>
+    <string name="radio_button_2">Passenger</string>
+    <string name="radio_button_3">Diver</string>
+
+    <string name="system_suggest">System suggest</string>
 </resources>
