@@ -217,9 +217,9 @@ public class OfferRideFragment extends AppCompatActivity {
                     mFirebaseMethods.addPoints(userID, 100);
 
                     //Shows the ride has been created successfully
-                    OfferRideCreatedDialog dialog = new OfferRideCreatedDialog(mContext);
-                    dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-                    dialog.show();
+//                    OfferRideCreatedDialog dialog = new OfferRideCreatedDialog(mContext);
+//                    dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+//                    dialog.show();
 
                     finish();
 

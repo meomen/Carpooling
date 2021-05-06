@@ -80,7 +80,7 @@ public class BottomNavigationViewHelper {
 
     public static void addBadge(final Context context, BottomNavigationView bottomNavigationView, int reminderLength){
         BottomNavigationMenuView bottomNavigationMenuView = (BottomNavigationMenuView) bottomNavigationView.getChildAt(0);
-        View v = bottomNavigationMenuView.getChildAt(1);
+        View v = bottomNavigationMenuView.getChildAt(2);
         BottomNavigationItemView itemView = (BottomNavigationItemView) v;
         View badge = LayoutInflater.from(context).inflate(R.layout.util_navigation_notification, itemView, true);
         TextView textView = (TextView) badge.findViewById(R.id.notificationsCount);

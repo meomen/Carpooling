@@ -186,9 +186,9 @@ public class EditRideActivity extends AppCompatActivity {
                     mFirebaseMethods.checkNotifications(getCurrentDate(), "You have created a ride!");
 
                     //Shows the ride has been created successfully
-                    OfferRideCreatedDialog dialog = new OfferRideCreatedDialog(mContext);
-                    dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-                    dialog.show();
+//                    OfferRideCreatedDialog dialog = new OfferRideCreatedDialog(mContext);
+//                    dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+//                    dialog.show();
 
                     finish();
 

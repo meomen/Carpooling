@@ -325,7 +325,8 @@ public class PaymentActivity extends AppCompatActivity {
                     }
                 });
 
-        firebase.gopool.models.Request request = new firebase.gopool.models.Request(userID, profile_photo2, profile_photo, username, 1, destination, currentLocation, 1, false, rideID, dateOnly, pickupTime,   Float.parseFloat(cost.substring(2)), pickupLocation, licencePlate);
+        String price = cost.replaceAll("VND","");
+        firebase.gopool.models.Request request = new firebase.gopool.models.Request(userID, profile_photo2, profile_photo, username, 1, destination, currentLocation, 1, false, rideID, dateOnly, pickupTime,   Float.parseFloat(price), pickupLocation, licencePlate);
 
         myRef.child("requestRide")
                 .child(rideID)

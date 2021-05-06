@@ -37,10 +37,10 @@ import retrofit2.Response;
 public class MapFrequentRouteActivity extends AppCompatActivity implements OnMapReadyCallback, TaskLoadedCallback {
     private GoogleMap mMap;
     private FrequentRouteResults route;
-    private Marker markerStart,markerEnd;
+    private Marker markerStart, markerEnd;
 
     private LinearLayout layout_radiobtn;
-    private Button btn_share,btn_cancle_share;
+    private Button btn_share, btn_cancle_share;
     private RadioGroup radioGroup;
 
     private FrequentRouteService mService;
@@ -67,16 +67,15 @@ public class MapFrequentRouteActivity extends AppCompatActivity implements OnMap
         radioGroup = (RadioGroup) findViewById(R.id.radio_group);
         mService = FrequentRouteClient.getFrequentRouteClient();
 
-        if(getIntent() != null) {
+        if (getIntent() != null) {
             route = (FrequentRouteResults) getIntent().getSerializableExtra("data");
         }
 
-        if(route.getIs_shared() != 0) {
+        if (route.getIs_shared() != 0) {
             btn_cancle_share.setVisibility(View.VISIBLE);
             btn_share.setVisibility(View.GONE);
             layout_radiobtn.setVisibility(View.GONE);
-        }
-        else {
+        } else {
             btn_cancle_share.setVisibility(View.GONE);
             btn_share.setVisibility(View.VISIBLE);
             layout_radiobtn.setVisibility(View.VISIBLE);
@@ -87,44 +86,81 @@ public class MapFrequentRouteActivity extends AppCompatActivity implements OnMap
 
     private void setOnclick() {
         btn_share.setOnClickListener(view -> {
-            mService.updateIsShared(1,type_share,route.getId(),route.getUser_id())
-                    .enqueue(new Callback<ExceptionResult>() {
+            mService.updateIsShared(1, type_share, route.getId(), route.getUser_id())
+                    .enqueue(new Callback<Void>() {
                         @Override
-                        public void onResponse(Call<ExceptionResult> call, Response<ExceptionResult> response) {
-                            if(response.isSuccessful()) {
-                                Toast.makeText(MapFrequentRouteActivity.this,"Share successful!",Toast.LENGTH_SHORT).show();
+                        public void onResponse(Call<Void> call, Response<Void> response) {
+                            if (response.isSuccessful()) {
+                                Toast.makeText(MapFrequentRouteActivity.this, "Share successful!", Toast.LENGTH_SHORT).show();
                                 finish();
                             }
                         }
 
                         @Override
-                        public void onFailure(Call<ExceptionResult> call, Throwable t) {
-                            Toast.makeText(MapFrequentRouteActivity.this,"Share failed!",Toast.LENGTH_SHORT).show();
+                        public void onFailure(Call<Void> call, Throwable t) {
+                            Toast.makeText(MapFrequentRouteActivity.this, "Share failed!", Toast.LENGTH_SHORT).show();
                         }
                     });
         });
         btn_cancle_share.setOnClickListener(view -> {
-            mService.updateIsShared(0,"none",route.getId(),route.getUser_id())
-                    .enqueue(new Callback<ExceptionResult>() {
+            mService.updateIsShared(0, "none", route.getId(), route.getUser_id())
+                    .enqueue(new Callback<Void>() {
                         @Override
-                        public void onResponse(Call<ExceptionResult> call, Response<ExceptionResult> response) {
-                            if(response.isSuccessful()) {
-                                Toast.makeText(MapFrequentRouteActivity.this,"Cancle share successful!",Toast.LENGTH_SHORT).show();
+                        public void onResponse(Call<Void> call, Response<Void> response) {
+                            if (response.isSuccessful()) {
+                                Toast.makeText(MapFrequentRouteActivity.this, "Cancle share successful!", Toast.LENGTH_SHORT).show();
                                 finish();
                             }
                         }
 
                         @Override
-                        public void onFailure(Call<ExceptionResult> call, Throwable t) {
-                            Toast.makeText(MapFrequentRouteActivity.this,"Cancle share failed!",Toast.LENGTH_SHORT).show();
+                        public void onFailure(Call<Void> call, Throwable t) {
+                            Toast.makeText(MapFrequentRouteActivity.this, "Cancle share failed!", Toast.LENGTH_SHORT).show();
                         }
                     });
         });
 
+
+//    private void setOnclick() {
+//        btn_share.setOnClickListener(view -> {
+//            mService.updateIsShared(1,type_share,route.getId(),route.getUser_id())
+//                    .enqueue(new Callback<ExceptionResult>() {
+//                        @Override
+//                        public void onResponse(Call<ExceptionResult> call, Response<ExceptionResult> response) {
+//                            if(response.isSuccessful()) {
+//                                Toast.makeText(MapFrequentRouteActivity.this,"Share successful!",Toast.LENGTH_SHORT).show();
+//                                finish();
+//                            }
+//                        }
+//
+//                        @Override
+//                        public void onFailure(Call<ExceptionResult> call, Throwable t) {
+//                            Toast.makeText(MapFrequentRouteActivity.this,"Share failed!",Toast.LENGTH_SHORT).show();
+//                        }
+//                    });
+//        });
+//        btn_cancle_share.setOnClickListener(view -> {
+//            mService.updateIsShared(0,"none",route.getId(),route.getUser_id())
+//                    .enqueue(new Callback<ExceptionResult>() {
+//                        @Override
+//                        public void onResponse(Call<ExceptionResult> call, Response<ExceptionResult> response) {
+//                            if(response.isSuccessful()) {
+//                                Toast.makeText(MapFrequentRouteActivity.this,"Cancle share successful!",Toast.LENGTH_SHORT).show();
+//                                finish();
+//                            }
+//                        }
+//
+//                        @Override
+//                        public void onFailure(Call<ExceptionResult> call, Throwable t) {
+//                            Toast.makeText(MapFrequentRouteActivity.this,"Cancle share failed!",Toast.LENGTH_SHORT).show();
+//                        }
+//                    });
+//        });
+
         radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup radioGroup, int i) {
-                RadioButton rb=(RadioButton)findViewById(i);
+                RadioButton rb = (RadioButton) findViewById(i);
                 type_share = rb.getText().toString();
             }
         });
@@ -137,7 +173,7 @@ public class MapFrequentRouteActivity extends AppCompatActivity implements OnMap
         LatLngBounds bounds = builder.build();
 
         int padding = 100;
-        CameraUpdate cu = CameraUpdateFactory.newLatLngBounds(bounds,padding);
+        CameraUpdate cu = CameraUpdateFactory.newLatLngBounds(bounds, padding);
         mMap.animateCamera(cu);
     }
 
@@ -152,8 +188,9 @@ public class MapFrequentRouteActivity extends AppCompatActivity implements OnMap
 
         markerStart = mMap.addMarker(marker);
     }
+
     private void createMarkerEnd(LatLng endPoint) {
-        String snippet =  route.getAddress_destination() + "\n" +
+        String snippet = route.getAddress_destination() + "\n" +
                 "Arrival time: " + route.getTime_destination() + "\n";
 
         MarkerOptions marker = new MarkerOptions()
@@ -189,14 +226,14 @@ public class MapFrequentRouteActivity extends AppCompatActivity implements OnMap
         mMap.getUiSettings().setMyLocationButtonEnabled(false);
 
         if (route != null) {
-            LatLng startPoint = new LatLng(route.getLat_start(),route.getLng_start());
-            LatLng endPoint = new LatLng(route.getLat_end(),route.getLng_end());
+            LatLng startPoint = new LatLng(route.getLat_start(), route.getLng_start());
+            LatLng endPoint = new LatLng(route.getLat_end(), route.getLng_end());
             createMarkerStart(startPoint);
             createMarkerEnd(endPoint);
             new FetchURL(MapFrequentRouteActivity.this, mMap).execute(getUrl(markerStart.getPosition(), markerEnd.getPosition(), "driving"), "driving");
 
             mMap.setOnMapLoadedCallback(() -> {
-                zoomMap(startPoint,endPoint);
+                zoomMap(startPoint, endPoint);
             });
         }
 
